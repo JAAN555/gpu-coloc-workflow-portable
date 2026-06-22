@@ -393,5 +393,5 @@ def main():
     print(f"{n_tests} pairs tested for colocalisation")
 
 if __name__ == "__main__":
-    main()(
+    main()
 
