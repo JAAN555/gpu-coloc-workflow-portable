@@ -1,32 +1,9 @@
-nextflow.enable.dsl=2
+#!/usr/bin/env bash
 
-params.outdir = params.containsKey('outdir') ? params.outdir : 'nf_out_coloc_comparisons_modular'
+module load any/python/3.8.3-conda || true
 
-params.gwas_roots = params.containsKey('gwas_roots') ? params.gwas_roots : ''
-params.eqtl_roots = params.containsKey('eqtl_roots') ? params.eqtl_roots : ''
+source "$(conda info --base)/etc/profile.d/conda.sh"
+conda activate gpucoloc_nf
 
-params.p12 = params.containsKey('p12') ? params.p12 : '1e-6'
-params.H4 = params.containsKey('H4') ? params.H4 : '0.8'
-
-include { CREATE_COMPARISONS_TSV } from './modules/create_comparisons_tsv'
-include { RUN_GPU_COLOC_COMPARISON } from './modules/run_gpu_coloc_comparison'
-
-workflow {
-  comparisons_file = CREATE_COMPARISONS_TSV()
-
-  comparisons = comparisons_file
-    .splitCsv(header:true, sep:'\t')
-    .map { row ->
-      tuple(
-        row.comparison_id as String,
-        row.gwas_name as String,
-        row.eqtl_name as String,
-        row.dir1 as String,
-        row.dir2 as String,
-        row.p12 as String,
-        row.H4 as String
-      )
-    }
-
-  RUN_GPU_COLOC_COMPARISON(comparisons)
-}
+export PATH="$CONDA_PREFIX/bin:$PATH"
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH:-}"
