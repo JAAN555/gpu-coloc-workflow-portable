@@ -4,6 +4,7 @@ set -euo pipefail
 ENV_NAME="gpucoloc_nf"
 
 module load any/python/3.8.3-conda || true
+module load nextflow/25.10.2 || module load nextflow || true
 
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
