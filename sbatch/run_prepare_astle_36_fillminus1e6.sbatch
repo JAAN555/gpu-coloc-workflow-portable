@@ -9,16 +9,20 @@
 
 set -euo pipefail
 
-cd ~/gpu-coloc
+# Run from the directory where sbatch was submitted
+cd "${SLURM_SUBMIT_DIR:-$(pwd)}"
 
-module load any/python/3.8.3-conda
-module load openjdk/17.0.3_7
+# Load cluster modules if available
+module load any/python/3.8.3-conda || true
+module load openjdk/17.0.3_7 || true
 
+# Activate conda environment
 source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate gpucoloc_nf
 
-export PATH="$HOME/.conda/envs/gpucoloc_nf/bin:$PATH"
-export LD_LIBRARY_PATH="$HOME/.conda/envs/gpucoloc_nf/lib:${LD_LIBRARY_PATH:-}"
+# Prefer binaries and libraries from the active conda environment
+export PATH="$CONDA_PREFIX/bin:$PATH"
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH:-}"
 
 export NXF_ANSI_LOG=false
 export NXF_OPTS="-Xms1g -Xmx4g"
@@ -26,6 +30,15 @@ export NXF_OPTS="-Xms1g -Xmx4g"
 NF="main_prepare_astle_parquets_modular.nf"
 CFG="configs/prepare_astle_parquets_modular.config"
 YML="params/params_prepare_astle_36_fillminus1e6.yml"
+
+if command -v nextflow >/dev/null 2>&1; then
+    NEXTFLOW_CMD="nextflow"
+elif [ -x "$HOME/nextflow" ]; then
+    NEXTFLOW_CMD="$HOME/nextflow"
+else
+    echo "ERROR: Nextflow not found on PATH or at \$HOME/nextflow"
+    exit 1
+fi
 
 START_EPOCH=$(date +%s)
 
@@ -36,13 +49,15 @@ echo "PWD        : $(pwd)"
 echo "NF         : $NF"
 echo "CFG        : $CFG"
 echo "YML        : $YML"
+echo "NEXTFLOW   : $NEXTFLOW_CMD"
 echo "JOB        : ${SLURM_JOB_ID:-NA}"
 echo "HOST       : $(hostname)"
 echo "START      : $(date)"
 echo "START_EPOCH: ${START_EPOCH}"
+echo "CONDA_ENV  : ${CONDA_PREFIX:-NA}"
 echo "======================================="
 
-"$HOME/nextflow" run "$NF" \
+"$NEXTFLOW_CMD" run "$NF" \
   -c "$CFG" \
   -params-file "$YML" \
   -resume
@@ -54,11 +69,13 @@ echo "======================================="
 echo "END        : $(date)"
 echo "END_EPOCH  : ${END_EPOCH}"
 echo "DURATION_S : ${DURATION}"
-echo "DURATION_H : $(python3 - <<PY
+echo "DURATION_H : $(python - <<PY
 print(round(${DURATION}/3600, 3))
 PY
 )"
 echo "Pipeline finished"
 echo "======================================="
 
-sacct -j "${SLURM_JOB_ID}" --format=JobID,JobName,Partition,State,Elapsed,AllocCPUS,ReqMem,MaxRSS,CPUTimeRaw,NodeList -P || true
+if command -v sacct >/dev/null 2>&1 && [ -n "${SLURM_JOB_ID:-}" ]; then
+    sacct -j "${SLURM_JOB_ID}" --format=JobID,JobName,Partition,State,Elapsed,AllocCPUS,ReqMem,MaxRSS,CPUTimeRaw,NodeList -P || true
+fi
