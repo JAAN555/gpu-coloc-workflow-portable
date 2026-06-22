@@ -1,0 +1,16 @@
+.nextflow*
+work/
+nf_out*/
+pipeline_info/
+*.out
+*.err
+*.log
+*.html
+*.tar.gz
+*.pickle
+*.tsv.gz
+*.csv
+*.tsv
+*.parquet
+.DS_Store
+__pycache__/
