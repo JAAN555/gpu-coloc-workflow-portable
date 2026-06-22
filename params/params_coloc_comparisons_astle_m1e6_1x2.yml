@@ -1,0 +1,10 @@
+outdir: "nf_out_coloc_comparisons_astle_m1e6_1x2"
+
+max_gpu_jobs: 2
+
+gwas_roots: "Astle_2016_m1e6=/gpfs/helios/home/jaanotte/gpu-coloc/nf_out_prepare_astle_parquets_modular_36_fillminus1e6/03_gwas_grouped_root/gwas_grouped"
+
+eqtl_roots: "ge_microarray_aptamer=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/ge_microarray_aptamer_parquets|exon=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/exon_parquets"
+
+p12: "1e-6"
+H4: "0.8"
