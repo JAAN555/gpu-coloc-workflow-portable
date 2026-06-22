@@ -1,0 +1,20 @@
+name: gpucoloc_nf
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - pyarrow
+  - fastparquet
+  - tqdm
+  - pysam
+  - openjdk=17
+  - libgcc-ng
+  - libstdcxx-ng
+  - ucsc-liftover
+  - pip
+  - pip:
+      - torch
