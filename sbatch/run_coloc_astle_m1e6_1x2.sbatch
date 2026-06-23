@@ -61,6 +61,7 @@ echo "======================================="
 "$NEXTFLOW_CMD" run "$NF" \
   -c "$CFG" \
   -params-file "$YML" \
+  -work-dir work_gpu_coloc_comparison \
   -resume
 
 END_EPOCH=$(date +%s)
