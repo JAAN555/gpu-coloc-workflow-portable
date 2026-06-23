@@ -61,6 +61,7 @@ echo "======================================="
 "$NEXTFLOW_CMD" run "$NF" \
   -c "$CFG" \
   -params-file "$YML" \
+  -work-dir work_astle_m1e6 \
   -resume
 
 END_EPOCH=$(date +%s)
