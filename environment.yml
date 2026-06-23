@@ -17,4 +17,4 @@ dependencies:
   - ucsc-liftover
   - pip
   - pip:
-      - torch
+      - torch==2.5.1
