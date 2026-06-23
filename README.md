@@ -63,3 +63,4 @@ sbatch sbatch/run_coloc_astle_m1e6_1x2.sbatch
 - Subsequent sessions only require running `source env.sh` and are significantly faster.
 - Users may need to update dataset paths in the parameter files before running the workflows.
 - This workflow is intended to be run on the University HPC environment. The setup script assumes that Conda is available through the HPC module system using `module load any/python/3.8.3-conda`. Users running the workflow on another system may need to install Conda manually or modify `setup_gpucoloc.sh` and `env.sh` according to their local environment.
+- PyTorch is pinned to 2.5.1 because newer default PyPI builds may not support the Tesla V100 GPUs used on the HPC cluster.
