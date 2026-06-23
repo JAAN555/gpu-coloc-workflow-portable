@@ -1,0 +1,15 @@
+outdir: "nf_out_prepare_de_lange_parquets_modular_36_fillminus1e6"
+
+summary_stats_root: "/gpfs/space/projects/genomic_references/summary_stats"
+
+gwas_limit: 36
+gwas_chr: ""
+
+gwas_window: 1000000
+gwas_chunksize: 500000
+gwas_min_lbf: 5.0
+gwas_lead_p: 5e-8
+gwas_effect_prior: 0.2
+
+coloc_group_merge_gap: 0
+max_signals_per_group: 20
