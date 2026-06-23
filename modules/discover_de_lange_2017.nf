@@ -1,5 +1,5 @@
-process DISCOVER_ASTLE_2016 {
-  tag { "Astle_2016" }
+process DISCOVER_DE_LANGE_2017 {
+  tag { "de_Lange_2017" }
 
   publishDir "${params.outdir}/00_discovery", mode: 'copy'
 
@@ -16,8 +16,7 @@ process DISCOVER_ASTLE_2016 {
 
   python3 ${projectDir}/scripts/discover_gwas_gwascatalog.py \\
     --root "${params.summary_stats_root}" \\
-    --pattern "GWASCatalog/Astle_2016/**/harmonised/*.h.tsv.gz" \\
-    --limit "${params.gwas_limit}" \\
+    --pattern "GWASCatalog/de_Lange_2017/*.h.tsv.gz" \\
     --out gwas_paths.tsv
 
   test -s gwas_paths.tsv
