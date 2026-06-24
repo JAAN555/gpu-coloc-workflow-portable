@@ -2,6 +2,8 @@ outdir: "nf_out_prepare_astle_parquets_modular_36_fillminus1e6"
 
 summary_stats_root: "/gpfs/space/projects/genomic_references/summary_stats"
 
+gwas_dataset_name: "Astle_2016"
+gwas_pattern: "GWASCatalog/Astle_2016/**/harmonised/*.h.tsv.gz"
 gwas_limit: 36
 gwas_chr: ""
 
