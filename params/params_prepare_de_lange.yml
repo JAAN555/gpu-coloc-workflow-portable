@@ -2,7 +2,9 @@ outdir: "nf_out_prepare_de_lange_parquets_modular_36_fillminus1e6"
 
 summary_stats_root: "/gpfs/space/projects/genomic_references/summary_stats"
 
-gwas_limit: 36
+gwas_dataset_name: "de_Lange_2017"
+gwas_pattern: "GWASCatalog/de_Lange_2017/*.h.tsv.gz"
+gwas_limit: 3
 gwas_chr: ""
 
 gwas_window: 1000000
