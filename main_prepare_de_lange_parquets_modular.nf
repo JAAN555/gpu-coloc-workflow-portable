@@ -15,13 +15,13 @@ params.gwas_effect_prior = (params.containsKey('gwas_effect_prior') ? params.gwa
 params.coloc_group_merge_gap = (params.containsKey('coloc_group_merge_gap') ? params.coloc_group_merge_gap : 0) as Integer
 params.max_signals_per_group = (params.containsKey('max_signals_per_group') ? params.max_signals_per_group : 20) as Integer
 
-include { DISCOVER_DE_LANGE_2017 } from './modules/discover_de_lange_2017'
+include { DISCOVER_GWAS_GWASCATALOG } from './modules/discover_gwas_catalog'
 include { BUILD_GWAS_SIGNALS } from './modules/build_gwas_signals'
 include { BUILD_GWAS_GROUPED_PARQUET_CHR } from './modules/build_gwas_grouped_parquet_chr'
 include { ASSEMBLE_GWAS_GROUPED_ROOT } from './modules/assemble_gwas_grouped_root'
 
 workflow {
-  gwas_paths = DISCOVER_DE_LANGE_2017()
+  gwas_paths = DISCOVER_GWAS_GWASCATALOG()
 
   rows = gwas_paths
     .splitCsv(header:true, sep:'\t')
