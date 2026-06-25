@@ -1,0 +1,17 @@
+nextflow.trace/v2
+realtime=11962671
+%cpu=1208
+cpu_model=Intel(R) Xeon(R) Silver 4216 CPU @ 2.10GHz
+rchar=87330992791
+wchar=4047582
+syscr=72090118
+syscw=25724
+read_bytes=0
+write_bytes=0
+%mem=52
+vmem=45242564
+rss=27372424
+peak_vmem=45541352
+peak_rss=29496544
+vol_ctxt=9336587
+inv_ctxt=41329

@@ -1,0 +1,17 @@
+nextflow.trace/v2
+realtime=272584
+%cpu=927
+cpu_model=AMD EPYC 7702 64-Core Processor
+rchar=310807063
+wchar=576478878
+syscr=10383
+syscw=3137252
+read_bytes=0
+write_bytes=0
+%mem=0
+vmem=2121280
+rss=344964
+peak_vmem=2173736
+peak_rss=376468
+vol_ctxt=16887
+inv_ctxt=723

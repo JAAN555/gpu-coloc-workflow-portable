@@ -1,0 +1,14 @@
+outdir: "nf_out_prepare_adipoexpress_eqtl_parquets"
+
+summary_stats_root: "/gpfs/space/projects/genomic_references/summary_stats/AdipoExpress/labfs"
+
+eqtl_dataset_name: "AdipoExpress"
+eqtl_pattern: "EURonly_AB1_local_eQTL_meta_chr*.labf_variable.txt.gz"
+eqtl_limit: 0
+
+reference_fasta: "/gpfs/space/projects/genomic_references/annotations/hg38/hg38.fa"
+
+eqtl_min_lbf: 5.0
+
+coloc_group_merge_gap: 0
+max_signals_per_group: 20

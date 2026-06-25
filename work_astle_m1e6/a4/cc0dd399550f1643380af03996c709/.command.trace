@@ -1,0 +1,17 @@
+nextflow.trace/v2
+realtime=430878
+%cpu=973
+cpu_model=AMD EPYC 7763 64-Core Processor
+rchar=3105457361
+wchar=136330990
+syscr=8665
+syscw=242
+read_bytes=0
+write_bytes=0
+%mem=1
+vmem=3101160
+rss=1343288
+peak_vmem=3101420
+peak_rss=1343288
+vol_ctxt=42054
+inv_ctxt=625

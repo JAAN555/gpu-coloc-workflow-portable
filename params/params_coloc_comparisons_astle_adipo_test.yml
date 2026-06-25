@@ -1,0 +1,10 @@
+outdir: "nf_out_coloc_comparisons_astle_adipo_test"
+
+max_gpu_jobs: 2
+
+gwas_roots: "Astle_2016_m1e6=/gpfs/helios/home/jaanotte/gpu-coloc-workflow-portable/nf_out_prepare_astle_parquets_modular_36_fillminus1e6/03_gwas_grouped_root/gwas_grouped"
+
+eqtl_roots: "AdipoExpress=/gpfs/helios/home/jaanotte/gpu-coloc-workflow-portable/nf_out_prepare_adipoexpress_eqtl_parquets/03_eqtl_grouped_root/eqtl_grouped"
+
+p12: "1e-6"
+H4: "0.8"
