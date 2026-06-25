@@ -2,17 +2,23 @@
 work/
 nf_out*/
 pipeline_info/
+work_*
+
 *.out
-work_* \
 *.err
 *.log
 *.html
+
 *.tar.gz
+*.zip
+
 *.pickle
+*.parquet
+
 *.tsv.gz
 *.csv
 *.tsv
-*.zip
-*.parquet
+
+
 .DS_Store
 __pycache__/
