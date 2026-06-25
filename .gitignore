@@ -3,6 +3,7 @@ work/
 nf_out*/
 pipeline_info/
 *.out
+work_* \
 *.err
 *.log
 *.html
@@ -11,6 +12,7 @@ pipeline_info/
 *.tsv.gz
 *.csv
 *.tsv
+*.zip
 *.parquet
 .DS_Store
 __pycache__/
