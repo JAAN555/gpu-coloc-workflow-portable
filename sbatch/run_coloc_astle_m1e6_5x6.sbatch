@@ -30,7 +30,7 @@ export NXF_OPTS="-Xms1g -Xmx4g"
 
 NF="main_coloc_comparisons_modular.nf"
 CFG="configs/coloc_comparisons_modular.config"
-YML="params/params_coloc_comparisons_astle_m1e6_5x5.yml"
+YML="params/params_coloc_comparisons_astle_m1e6_5x6.yml"
 
 if command -v nextflow >/dev/null 2>&1; then
     NEXTFLOW_CMD="nextflow"
