@@ -1,10 +1,10 @@
 outdir: "nf_out_coloc_comparisons_huge_test"
 
-max_gpu_jobs: 25
+max_gpu_jobs: 30
 
 gwas_roots: "Suzuki_Aragam=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/Suzuki_Aragam_parquets|FinnGen_MVP_UKBB=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/FinnGen+MVP+UKBB_parquets|FinnGen=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/FinnGen_lbf_parquets|Astle_2016_m1e6=/gpfs/helios/home/jaanotte/gpu-coloc-workflow-portable/nf_out_prepare_astle_parquets_modular_36_fillminus1e6/03_gwas_grouped_root/gwas_grouped|de_Lange_2017_m1e6=/gpfs/helios/home/jaanotte/gpu-coloc-workflow-portable/nf_out_prepare_de_lange_parquets_modular_36_fillminus1e6/03_gwas_grouped_root/gwas_grouped"
 
-eqtl_roots: "ge_microarray_aptamer=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/ge_microarray_aptamer_parquets|exon=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/exon_parquets|leafcutter=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/leafcutter_parquets|tx=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/tx_parquets|txrev=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/txrev_parquets"
+eqtl_roots: "ge_microarray_aptamer=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/ge_microarray_aptamer_parquets|exon=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/exon_parquets|leafcutter=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/leafcutter_parquets|tx=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/tx_parquets|txrev=/gpfs/helios/projects/shared_gwas/gpu-coloc_resources/eQTL_Catalogue/txrev_parquets|AdipoExpress=/gpfs/helios/home/jaanotte/gpu-coloc-workflow-portable/nf_out_prepare_adipoexpress_eqtl_parquets/03_eqtl_grouped_root/eqtl_grouped"
 
 p12: "1e-6"
 H4: "0.8"
