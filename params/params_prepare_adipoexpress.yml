@@ -4,6 +4,7 @@ summary_stats_root: "/gpfs/space/projects/genomic_references/summary_stats/Adipo
 
 eqtl_dataset_name: "AdipoExpress"
 eqtl_pattern: "EURonly_AB1_local_eQTL_meta_chr*.labf_variable.txt.gz"
+eqtl_chrom_regex: '_chr(?P<chrom>[0-9]+|X)\.labf_variable\.txt\.gz$'
 eqtl_limit: 0
 
 reference_fasta: "/gpfs/space/projects/genomic_references/annotations/hg38/hg38.fa"
