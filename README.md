@@ -119,4 +119,5 @@ need to replace the HPC-specific `module load` command in
 - The initial Conda environment creation may take several minutes.
 - Input GWAS and eQTL datasets are not included in this repository.
 - Dataset locations should be configured through the parameter files.
-- The workflows assume execution in a SLURM-managed HPC environment.
+- The provided execution configurations and submission scripts target a
+SLURM-managed HPC environment.
