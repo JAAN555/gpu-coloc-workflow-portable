@@ -99,8 +99,6 @@ These files document the software versions used during development and validatio
 
 ---
 
-# HPC environment
-
 ## HPC environment
 
 The framework was developed and tested on the University of Tartu Rocket HPC cluster.
@@ -110,6 +108,10 @@ The setup scripts use the HPC Conda module to create and activate the software e
 ```bash
 module load any/python/3.8.3-conda
 ```
+On other systems, users must have Conda or Miniconda installed and may
+need to replace the HPC-specific `module load` command in
+`setup_gpucoloc.sh` and `env.sh`.
+
 ---
 
 # Notes
