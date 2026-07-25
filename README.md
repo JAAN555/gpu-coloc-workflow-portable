@@ -101,17 +101,15 @@ These files document the software versions used during development and validatio
 
 # HPC environment
 
-The framework was developed on the University of Tartu Rocket HPC cluster.
+## HPC environment
 
-The helper scripts currently assume:
+The framework was developed and tested on the University of Tartu Rocket HPC cluster.
+
+The setup scripts use the HPC Conda module to create and activate the software environment:
 
 ```bash
 module load any/python/3.8.3-conda
-module load nextflow/25.10.2
 ```
-
-Users running the framework on another system may need to modify `setup_gpucoloc.sh` and `env.sh` according to their local software environment.
-
 ---
 
 # Notes
