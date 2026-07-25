@@ -36,6 +36,15 @@ def main():
     )
 
     ap.add_argument(
+        "--chrom-regex",
+        default=r"_chr(?P<chrom>[0-9]+|X)\.labf_variable\.txt\.gz$",
+        help=(
+            "Regex used to extract the chromosome from the filename. "
+            "Must contain a named group 'chrom'."
+        )
+    )
+
+    ap.add_argument(
         "--limit",
         type=int,
         default=0,
@@ -48,6 +57,17 @@ def main():
     )
 
     args = ap.parse_args()
+
+    try:
+        chrom_regex = re.compile(args.chrom_regex)
+    except re.error as exc:
+        ap.error(f"invalid --chrom-regex: {exc}")
+
+    if "chrom" not in chrom_regex.groupindex:
+        ap.error(
+            "--chrom-regex must contain a named capture group "
+            "called '(?P<chrom>...)'"
+        )    
 
     pattern = os.path.join(args.root, args.pattern)
     paths = sorted(glob.glob(pattern))
@@ -66,16 +86,12 @@ def main():
 
     for p in paths:
         base = os.path.basename(p)
-
-        m = re.search(
-            r"_chr([0-9]+|X)\.labf_variable\.txt\.gz$",
-            base
-        )
+        m = chrom_regex.search(base)
 
         if not m:
             continue
 
-        chrom = m.group(1)
+        chrom = m.group("chrom")
 
         rows.append(
             (
@@ -85,8 +101,15 @@ def main():
             )
         )
 
-    rows.sort(key=lambda x: chrom_sort_key(x[1]))
+    if not rows:
+        print(
+            "ERROR: files matched the glob pattern, but none matched "
+            f"the chromosome regex: {args.chrom_regex}",
+            file=sys.stderr
+        )
+        sys.exit(3)
 
+    rows.sort(key=lambda x: chrom_sort_key(x[1]))
     if args.limit > 0:
         rows = rows[:args.limit]
 
