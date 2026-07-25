@@ -5,6 +5,9 @@ params.summary_stats_root = params.containsKey('summary_stats_root') ? params.su
 
 params.eqtl_dataset_name = params.containsKey('eqtl_dataset_name') ? params.eqtl_dataset_name : 'AdipoExpress'
 params.eqtl_pattern = params.containsKey('eqtl_pattern') ? params.eqtl_pattern : 'EURonly_AB1_local_eQTL_meta_chr*.labf_variable.txt.gz'
+params.eqtl_chrom_regex = params.containsKey('eqtl_chrom_regex') ?
+    params.eqtl_chrom_regex :
+    '_chr(?P<chrom>[0-9]+|X)\\.labf_variable\\.txt\\.gz$'
 params.eqtl_limit = (params.containsKey('eqtl_limit') ? params.eqtl_limit : 0) as Integer
 
 params.reference_fasta = params.containsKey('reference_fasta') ? params.reference_fasta : '/gpfs/space/projects/genomic_references/annotations/hg38/hg38.fa'
