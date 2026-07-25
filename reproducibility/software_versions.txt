@@ -1,0 +1,14 @@
+Python 3.12.13
+
+      N E X T F L O W
+      version 25.10.2 build 10555
+      created 28-11-2025 19:24 UTC (21:24 EEST)
+      cite doi:10.1038/nbt.3820
+      http://nextflow.io
+
+openjdk version "17.0.18-internal" 2026-01-20
+OpenJDK Runtime Environment (build 17.0.18-internal+0-adhoc.conda.src)
+OpenJDK 64-Bit Server VM (build 17.0.18-internal+0-adhoc.conda.src, mixed mode, sharing)
+PyTorch: 2.5.1+cu124
+pandas: 3.0.3
+NumPy: 2.4.6
