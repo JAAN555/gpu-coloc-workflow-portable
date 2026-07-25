@@ -4,7 +4,6 @@ set -euo pipefail
 ENV_NAME="gpucoloc_nf"
 
 module load any/python/3.8.3-conda || true
-module load nextflow/25.10.2 || module load nextflow || true
 
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
@@ -36,12 +35,6 @@ echo "Java:"
 java -version
 
 echo "Nextflow:"
-if command -v nextflow >/dev/null 2>&1; then
-    nextflow -version
-elif [ -x "$HOME/nextflow" ]; then
-    "$HOME/nextflow" -version
-else
-    echo "WARNING: Nextflow not found. Install Nextflow separately or place it on PATH."
-fi
+nextflow -version
 
 echo "Setup complete."
