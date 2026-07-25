@@ -78,23 +78,12 @@ outdir: "/path/to/output"
 
 SLURM submission scripts are located in the `sbatch/` directory.
 
-To submit a workflow:
+Run the desired workflow using:
 
 ```bash
 sbatch sbatch/<script>.sbatch
 ```
 
-Alternatively, workflows can be executed directly using Nextflow.
-
-Example:
-
-```bash
-nextflow run <workflow>.nf \
-    -params-file params/<parameters>.yml \
-    -c configs/<config>.config
-```
-
----
 
 # Reproducibility
 
