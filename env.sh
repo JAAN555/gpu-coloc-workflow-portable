@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-module load any/python/3.8.3-conda || true
+if command -v module >/dev/null 2>&1; then
+    module load any/python/3.8.3-conda
+fi
+
+if ! command -v conda >/dev/null 2>&1; then
+    echo "ERROR: Conda is not available." >&2
+    echo "Install Conda/Miniconda or load the appropriate HPC module." >&2
+    return 1
+fi
 
 source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate gpucoloc_nf
