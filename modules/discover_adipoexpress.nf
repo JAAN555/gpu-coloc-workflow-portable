@@ -17,7 +17,7 @@ process DISCOVER_ADIPOEXPRESS {
   python3 ${projectDir}/scripts/discover_adipoexpress.py \\
     --root "${params.summary_stats_root}" \\
     --pattern "${params.eqtl_pattern}" \\
-    --chrom-regex "${params.eqtl_chrom_regex}" \
+    --chrom-regex "${params.eqtl_chrom_regex}" \\
     --dataset-name "${params.eqtl_dataset_name}" \\
     --limit "${params.eqtl_limit}" \\
     --out adipoexpress_paths.tsv
