@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ENV_NAME="gpucoloc_nf"
+ENV_NAME="${GPUCOLOC_ENV_NAME:-gpucoloc_nf}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ENV_FILE="${SCRIPT_DIR}/environment.yml"
