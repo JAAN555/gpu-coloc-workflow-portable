@@ -60,10 +60,12 @@ print("tqdm:", tqdm.__version__)
 PY
 
 echo "Java:"
-conda run --no-capture-output -n "$ENV_NAME" java -version
+conda run --no-capture-output -n "$ENV_NAME" \
+    bash -c 'java -version'
 
 echo "Nextflow:"
-conda run --no-capture-output -n "$ENV_NAME" nextflow -version
+conda run --no-capture-output -n "$ENV_NAME" \
+    bash -c 'nextflow -version'
 
 echo
 echo "Setup complete."
