@@ -11,7 +11,11 @@ if ! command -v conda >/dev/null 2>&1; then
 fi
 
 source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate gpucoloc_nf
+
+
+ENV_NAME="${GPUCOLOC_ENV_NAME:-gpucoloc_nf}"
+conda activate "$ENV_NAME"
+
 
 export PATH="$CONDA_PREFIX/bin:$PATH"
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH:-}"
