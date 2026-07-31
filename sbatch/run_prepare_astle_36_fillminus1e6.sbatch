@@ -19,7 +19,8 @@ module load openjdk/17.0.3_7 || true
 
 # Activate conda environment
 source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate gpucoloc_nf
+ENV_NAME="${GPUCOLOC_ENV_NAME:-gpucoloc_nf}"
+conda activate "$ENV_NAME"
 
 # Prefer binaries and libraries from the active conda environment
 export PATH="$CONDA_PREFIX/bin:$PATH"
@@ -61,8 +62,7 @@ echo "======================================="
 "$NEXTFLOW_CMD" run "$NF" \
   -c "$CFG" \
   -params-file "$YML" \
-  -work-dir work_astle_m1e6 \
-  -resume
+  -work-dir work_astle_m1e6
 
 END_EPOCH=$(date +%s)
 DURATION=$((END_EPOCH - START_EPOCH))
