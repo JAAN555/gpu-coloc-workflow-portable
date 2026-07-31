@@ -34,10 +34,15 @@ fi
 conda activate "$ENV_NAME"
 
 echo "=== Environment check ==="
-echo "Python: $(which python)"
-python --version
+echo "Environment: $ENV_NAME"
 
-python - <<'PY'
+conda run --no-capture-output -n "$ENV_NAME" \
+    bash -c 'echo "Python: $(command -v python)"'
+
+conda run --no-capture-output -n "$ENV_NAME" \
+    python --version
+
+conda run --no-capture-output -n "$ENV_NAME" python - <<'PY'
 import numpy
 import pandas
 import pyarrow
@@ -46,13 +51,22 @@ import torch
 import tqdm
 
 print("Python package check OK")
+print("numpy:", numpy.__version__)
+print("pandas:", pandas.__version__)
+print("pyarrow:", pyarrow.__version__)
+print("pysam:", pysam.__version__)
 print("torch:", torch.__version__)
+print("tqdm:", tqdm.__version__)
 PY
 
 echo "Java:"
-java -version
+conda run --no-capture-output -n "$ENV_NAME" java -version
 
 echo "Nextflow:"
-nextflow -version
+conda run --no-capture-output -n "$ENV_NAME" nextflow -version
 
+echo
 echo "Setup complete."
+echo "Activate the environment with:"
+echo "  export GPUCOLOC_ENV_NAME=\"$ENV_NAME\""
+echo "  source env.sh"
