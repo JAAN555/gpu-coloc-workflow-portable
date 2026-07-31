@@ -50,6 +50,20 @@ source env.sh
 
 ---
 
+# Optional Conda environment name
+
+By default, the setup creates and activates the Conda environment
+`gpucoloc_nf`.
+
+To use a different environment name, set `GPUCOLOC_ENV_NAME` before setup:
+
+```bash
+export GPUCOLOC_ENV_NAME=gpucoloc_nf_test
+bash setup_gpucoloc.sh
+source env.sh
+```
+---
+
 # Workflow configuration
 
 Workflow parameters are stored in the `params/` directory.
