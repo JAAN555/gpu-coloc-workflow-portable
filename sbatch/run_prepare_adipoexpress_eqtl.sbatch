@@ -58,8 +58,7 @@ echo "======================================="
 "$NEXTFLOW_CMD" run "$NF" \
   -c "$CFG" \
   -params-file "$YML" \
-  -work-dir work_adipoexpress_eqtl \
-  -resume
+  -work-dir work_adipoexpress_eqtl
 
 END_EPOCH=$(date +%s)
 DURATION=$((END_EPOCH - START_EPOCH))
