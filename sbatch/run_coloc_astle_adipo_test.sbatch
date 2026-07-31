@@ -16,7 +16,8 @@ module load nextflow/25.10.2 || module load nextflow || true
 module load openjdk/17.0.3_7 || true
 
 source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate gpucoloc_nf
+ENV_NAME="${GPUCOLOC_ENV_NAME:-gpucoloc_nf}"
+conda activate "$ENV_NAME"
 
 export PATH="$CONDA_PREFIX/bin:$PATH"
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH:-}"
@@ -56,8 +57,7 @@ echo "======================================="
 "$NEXTFLOW_CMD" run "$NF" \
   -c "$CFG" \
   -params-file "$YML" \
-  -work-dir work_coloc_astle_adipo_test \
-  -resume
+  -work-dir work_coloc_astle_adipo_test
 
 END_EPOCH=$(date +%s)
 DURATION=$((END_EPOCH - START_EPOCH))
