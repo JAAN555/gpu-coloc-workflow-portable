@@ -121,7 +121,7 @@ def safe_signal_name(dataset, molecular_trait_id, chrom, loc_min, loc_max, lbf_c
 
 def main():
     ap = argparse.ArgumentParser(
-        description="Build gpu-coloc-style AdipoExpress eQTL signal pickles from hg38 SuSiE LBF files"
+        description="Build gpu-coloc-style AdipoExpress eQTL signal pickles from conditionally analysed hg38 eQTL files"
     )
 
     ap.add_argument("--input", required=True)
