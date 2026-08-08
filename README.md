@@ -10,7 +10,7 @@ The framework consists of three computational workflows constructed from reusabl
 - eQTL parquet preparation
 - Large-scale colocalisation analysis
 
-The framework also includes supporting software configuration and is intended for execution in a SLURM-managed HPC environment, such as such as the University of Tartu HPC Rocket cluster.
+The framework also includes supporting software configuration and is intended for execution in a SLURM-managed HPC environment, such as the University of Tartu HPC Rocket cluster.
 
 ---
 
@@ -23,6 +23,8 @@ The GWAS and eQTL parquet preparation workflows transform compatible input datas
 The large-scale colocalisation analysis workflow generates GWAS-eQTL dataset comparisons and executes gpu-coloc analyses. The resulting colocalisation outputs can be used for downstream exploration and biological interpretation.
 
 ![Overview of the framework and its supporting components](figures/framework_overview.png)
+
+---
 
 ## Repository structure
 
@@ -68,7 +70,11 @@ Automates Bayesian genetic colocalisation analyses using gpu-coloc compatible GW
 
 The workflow generates GWAS-eQTL dataset comparisons and executes gpu-coloc independently for each comparison. Additional information about the workflow modules is available in [`modules/README.md`](modules/README.md).
 
-# First-time setup
+---
+
+## Setup
+
+### First-time setup
 
 Clone the repository and create the Conda environment.
 
@@ -80,9 +86,9 @@ bash setup_gpucoloc.sh
 source env.sh
 ```
 
----
 
-# Subsequent sessions
+
+### Subsequent sessions
 
 Activate the existing Conda environment.
 
@@ -91,9 +97,9 @@ cd gpu-coloc-workflow-portable
 source env.sh
 ```
 
----
 
-# Optional Conda environment name
+
+### Optional Conda environment name
 
 By default, the setup creates and activates the Conda environment
 `gpucoloc_nf`.
@@ -107,56 +113,134 @@ source env.sh
 ```
 ---
 
-# Workflow configuration
+## Workflow configuration and execution
 
-Workflow parameters are stored in the `params/` directory.
+Each workflow uses a main Nextflow file together with parameter, execution configuration, and SLURM submission files:
 
-Execution settings are stored in the `configs/` directory.
+- **Main workflow (`.nf`)** - defines the workflow and the order in which its modules are executed.
+- **Parameter file (`.yml`)** - contains input and output locations and workflow parameters. Parameter values can be changed for different analyses.
+- **Execution configuration (`.config`)** - defines the computational resources and other execution settings for the workflow.
+- **SLURM submission script (`.sbatch`)** - starts the workflow on a SLURM-managed HPC environment using the selected workflow, parameter, and configuration files.
 
-Before running a workflow, update the parameter file for your analysis. Commonly modified parameters include:
+The files used for the provided workflow executions are shown below.
 
-- input dataset locations
-- output directory
-- dataset names
-- filename patterns
-- workflow-specific analysis parameters
+| Workflow | Main workflow | Parameter file | Execution configuration | SLURM script |
+|---|---|---|---|---|
+| Astle_2016 GWAS parquet preparation | [`main_prepare_astle_parquets_modular.nf`](main_prepare_astle_parquets_modular.nf) | [`params_prepare_astle_36_fillminus1e6.yml`](params/params_prepare_astle_36_fillminus1e6.yml) | [`prepare_astle_parquets_modular.config`](configs/prepare_astle_parquets_modular.config) | [`run_prepare_astle_36_fillminus1e6.sbatch`](sbatch/run_prepare_astle_36_fillminus1e6.sbatch) |
+| de_Lange_2017 GWAS parquet preparation | [`main_prepare_de_lange_parquets_modular.nf`](main_prepare_de_lange_parquets_modular.nf) | [`params_prepare_de_lange.yml`](params/params_prepare_de_lange.yml) | [`prepare_de_lange_parquets_modular.config`](configs/prepare_de_lange_parquets_modular.config) | [`run_prepare_de_lange.sbatch`](sbatch/run_prepare_de_lange.sbatch) |
+| AdipoExpress eQTL parquet preparation | [`main_prepare_adipoexpress_eqtl_parquets_modular.nf`](main_prepare_adipoexpress_eqtl_parquets_modular.nf) | [`params_prepare_adipoexpress.yml`](params/params_prepare_adipoexpress.yml) | [`prepare_adipoexpress_eqtl_parquets.config`](configs/prepare_adipoexpress_eqtl_parquets.config) | [`run_prepare_adipoexpress_eqtl.sbatch`](sbatch/run_prepare_adipoexpress_eqtl.sbatch) |
+| Large-scale colocalisation analysis (5 × 6) | [`main_coloc_comparisons_modular.nf`](main_coloc_comparisons_modular.nf) | [`params_coloc_comparisons_astle_m1e6_5x6.yml`](params/params_coloc_comparisons_astle_m1e6_5x6.yml) | [`coloc_comparisons_modular.config`](configs/coloc_comparisons_modular.config) | [`run_coloc_astle_m1e6_5x6.sbatch`](sbatch/run_coloc_astle_m1e6_5x6.sbatch) |
 
-Example:
+### Configuring workflow parameters
 
-```yaml
-gwas_roots: "Astle_2016=/path/to/gwas_parquets"
-eqtl_roots: "exon=/path/to/eqtl_parquets"
-outdir: "/path/to/output"
+Before running a workflow, the corresponding parameter file in [`params/`](params/) should be updated for the analysis. Parameter files contain input and output locations and workflow-specific parameter values.
+
+For example, the parameter file for the Astle_2016 GWAS parquet preparation workflow can be created or replaced using:
+
+```bash
+cat > params/params_prepare_astle_36_fillminus1e6.yml <<'EOF'
+outdir: "nf_out_prepare_astle_parquets_modular_36_fillminus1e6"
+
+summary_stats_root: "/path/to/summary_stats"
+
+gwas_dataset_name: "Astle_2016"
+gwas_pattern: "GWASCatalog/Astle_2016/**/harmonised/*.h.tsv.gz"
+
+gwas_limit: 36
+
+gwas_chr: ""
+gwas_window: 1000000
+gwas_chunksize: 500000
+
+gwas_min_lbf: 5.0
+gwas_lead_p: 5e-8
+gwas_effect_prior: 0.2
+
+coloc_group_merge_gap: 0
+max_signals_per_group: 20
+EOF
 ```
 
----
+Parameter values can be modified based on the requirements of the analysis. The `summary_stats_root` placeholder should be replaced with the location of the input GWAS summary statistics.
 
-## Running workflows
+### Running a workflow
 
-The provided SLURM submission scripts are located in `sbatch/`.
-
-| Script | Purpose |
-|---|---|
-| `run_prepare_astle_36_fillminus1e6.sbatch` | Runs the GWAS parquet preparation workflow for Astle_2016. |
-| `run_prepare_de_lange.sbatch` | Runs the GWAS parquet preparation workflow for de_Lange_2017. |
-| `run_prepare_adipoexpress_eqtl.sbatch` | Runs the eQTL parquet preparation workflow for AdipoExpress. |
-| `run_coloc_astle_m1e6_5x6.sbatch` | Runs the large-scale colocalisation analysis. |
-| `run_coloc_astle_adipo_test.sbatch` | Runs a smaller Astle_2016–AdipoExpress colocalisation analysis. |
-
-Run a workflow using:
+The provided SLURM submission scripts are located in [`sbatch/`](sbatch/). A workflow can be submitted using:
 
 ```bash
 sbatch sbatch/<script>.sbatch
 ```
 
-For example, to run the GWAS parquet preparation workflow for Astle_2016, use the following command:
+For example, to run the GWAS parquet preparation workflow for Astle_2016:
 
 ```bash
 sbatch sbatch/run_prepare_astle_36_fillminus1e6.sbatch
 ```
+
+### Monitoring workflow execution
+
+After submitting a workflow, the SLURM job can be monitored using:
+
+```bash
+squeue -u $USER
+```
+
+The SLURM submission scripts also define output (`.out`) and error (`.err`) log files. The exact filenames are specified by the `#SBATCH --output` and `#SBATCH --error` settings in the corresponding submission script.
+
+For example, the large-scale colocalisation analysis uses:
+
+```bash
+#SBATCH --output=nf_coloc_astle_m1e6.%j.out
+#SBATCH --error=nf_coloc_astle_m1e6.%j.err
+```
+
+Here, `%j` is replaced by the SLURM job ID. For example, if the submitted job ID is `123456`, the workflow output can be viewed using:
+
+```bash
+cat nf_coloc_astle_m1e6.123456.out
+```
+
+and errors can be viewed using:
+
+```bash
+cat nf_coloc_astle_m1e6.123456.err
+```
+
+### Workflow outputs
+
+The GWAS and eQTL parquet preparation workflows write their outputs to the directory specified by the `outdir` parameter in the corresponding parameter file.
+
+The final gpu-coloc compatible parquet resource is located in the grouped root output directory. For example, a prepared GWAS resource may be located at:
+
+```text
+/path/to/nf_out_prepare_de_lange_parquets_modular_36_fillminus1e6/03_gwas_grouped_root/gwas_grouped
+```
+
+The resulting parquet roots can be reused as inputs for the large-scale colocalisation analysis workflow. Their locations should be specified in the corresponding colocalisation parameter file.
+
+For example:
+
+```yaml
+gwas_roots: "de_Lange_2017=/path/to/03_gwas_grouped_root/gwas_grouped"
+eqtl_roots: "AdipoExpress=/path/to/03_eqtl_grouped_root/eqtl_grouped"
+```
+
+Multiple prepared GWAS or eQTL resources can be included by separating dataset definitions with a pipe (`|`).
+
+For example:
+
+```yaml
+gwas_roots: "Dataset1=/path/to/dataset1|Dataset2=/path/to/dataset2"
+eqtl_roots: "DatasetA=/path/to/datasetA|DatasetB=/path/to/datasetB"
+```
+
+The large-scale colocalisation analysis workflow writes its outputs to the directory specified by its `outdir` parameter. Final colocalisation results are provided as TSV files for the generated GWAS-eQTL dataset comparisons.
+
+The resulting TSV files can be copied from the HPC environment for downstream exploration or further analysis. For instructions on transferring files to or from the University of Tartu Rocket HPC cluster, see the [University of Tartu HPC documentation](https://docs.hpc.ut.ee/public/cluster/First_steps/quickstart/#copy-data).
+
 ---
 
-# Reproducibility
+## Reproducibility
 
 The software environment used for the framework is specified in `environment.yml`.
 
@@ -185,7 +269,7 @@ need to replace the HPC-specific `module load` command in
 
 ---
 
-# Notes
+## Notes
 
 - The initial Conda environment creation may take several minutes.
 - Input GWAS and eQTL datasets are not included in this repository.
