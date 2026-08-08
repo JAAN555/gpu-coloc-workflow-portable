@@ -11,6 +11,8 @@ This directory contains the reusable Nextflow DSL2 modules used by the computati
 | `BUILD_GWAS_GROUPED_PARQUET_CHR` | Groups GWAS signals and creates chromosome-level parquet files. |
 | `ASSEMBLE_GWAS_GROUPED_ROOT` | Assembles chromosome-level parquet files into the final GWAS parquet root. |
 
+The same modules are used for both Astle_2016 and de_Lange_2017. Dataset-specific settings are provided through workflow parameters.
+
 ## eQTL parquet preparation
 
 | Module | Description |
