@@ -26,6 +26,71 @@ The large-scale colocalisation analysis workflow generates GWAS-eQTL dataset com
 
 ---
 
+## Quick start
+
+For first-time users who want to test the framework without going through the detailed documentation, the steps below provide a short example using the de_Lange_2017 GWAS parquet preparation workflow.
+
+The example assumes that the required de_Lange_2017 input data are available on the University of Tartu Rocket HPC cluster.
+
+
+### 1. Connect to the HPC environment
+
+Connect to the University of Tartu Rocket HPC cluster using SSH. When connecting from outside the University of Tartu network, first connect to the University VPN. See the [University of Tartu VPN documentation](https://wiki.ut.ee/spaces/IT/pages/199673384/VPN) for setup instructions.
+
+For example, on Windows, one option is to use Git Bash to connect to Rocket:
+
+```bash
+ssh <username>@rocket.hpc.ut.ee
+```
+
+Replace `<username>` with your University of Tartu username.
+
+For additional information about accessing Rocket, see the [University of Tartu HPC quick-start guide](https://docs.hpc.ut.ee/public/cluster/First_steps/quickstart/#cluster-login). More general information about using the HPC environment is available in the [University of Tartu HPC documentation](https://docs.hpc.ut.ee/public/).
+
+### 2. Clone the repository
+
+```bash
+git clone https://github.com/JAAN555/gpu-coloc-workflow-portable.git
+cd gpu-coloc-workflow-portable
+```
+
+### 3. Create and activate the software environment
+
+```bash
+bash setup_gpucoloc.sh
+source env.sh
+```
+
+### 4. Configure the workflow parameters
+
+The provided parameter file can be used without modification if the default parameter values are suitable for the analysis and the input data are available at the configured location.
+
+Otherwise, create or replace the parameter file with the required values:
+
+```bash
+cat > params/params_prepare_de_lange.yml <<'EOF'
+...
+EOF
+```
+
+### 5. Submit the workflow
+
+```bash
+sbatch sbatch/run_prepare_de_lange.sbatch
+```
+
+### 6. Monitor the workflow
+
+```bash
+squeue -u $USER
+```
+
+The workflow output and error logs can also be inspected using the `.out` and `.err` files defined in the SLURM submission script.
+
+For detailed information about workflow configuration, execution, monitoring, and outputs, see [Workflow configuration and execution](#workflow-configuration-and-execution).
+
+---
+
 ## Repository structure
 
 | Path | Description |
