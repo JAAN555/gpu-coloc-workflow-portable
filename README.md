@@ -1,16 +1,28 @@
 # gpu-coloc-workflow-portable
 
-A modular Nextflow DSL2 framework for preparing GWAS and eQTL datasets for gpu-coloc and performing large-scale Bayesian genetic colocalisation analyses on HPC systems.
+A modular Nextflow DSL2 framework for preparing GWAS and eQTL datasets for gpu-coloc and performing large-scale Bayesian genetic colocalisation analyses using gpu-coloc on HPC systems.
 
-The framework consists of three main workflows:
+This repository contains the computational framework developed as part of the Master's thesis *Development of a scalable automated computational framework for genetic colocalisation analysis* at the University of Tartu.
+
+The framework consists of three computational workflows constructed from reusable Nextflow DSL2 modules:
 
 - GWAS parquet preparation
 - eQTL parquet preparation
-- Large-scale gpu-coloc analysis
+- Large-scale colocalisation analysis
 
-The workflows are implemented using reusable Nextflow DSL2 modules and are intended for execution on a SLURM-managed HPC environment.
+The framework also includes supporting software configuration and is intended for execution in a SLURM-managed HPC environment, such as such as the University of Tartu HPC Rocket cluster).
 
 ---
+
+## Framework overview
+
+The computational framework consists of three workflows constructed from reusable Nextflow DSL2 modules and supporting software configuration.
+
+The GWAS and eQTL parquet preparation workflows transform compatible input datasets into gpu-coloc compatible parquet representations. These outputs can be used as input for the large-scale colocalisation analysis workflow or reused in future gpu-coloc analyses without repeating dataset preparation.
+
+The large-scale colocalisation analysis workflow generates GWAS-eQTL dataset comparisons and executes gpu-coloc analyses. The resulting colocalisation outputs can be used for downstream exploration and biological interpretation.
+
+![Overview of the framework and its supporting components](figures/framework_overview.png)
 
 # Repository structure
 
@@ -97,16 +109,29 @@ outdir: "/path/to/output"
 
 ---
 
-# Running workflows
+## Running workflows
 
-SLURM submission scripts are located in the `sbatch/` directory.
+The provided SLURM submission scripts are located in `sbatch/`.
 
-Run the desired workflow using:
+| Script | Purpose |
+|---|---|
+| `run_prepare_astle_36_fillminus1e6.sbatch` | Runs the GWAS parquet preparation workflow for Astle_2016. |
+| `run_prepare_de_lange.sbatch` | Runs the GWAS parquet preparation workflow for de_Lange_2017. |
+| `run_prepare_adipoexpress_eqtl.sbatch` | Runs the eQTL parquet preparation workflow for AdipoExpress. |
+| `run_coloc_astle_m1e6_5x6.sbatch` | Runs the large-scale colocalisation analysis. |
+| `run_coloc_astle_adipo_test.sbatch` | Runs a smaller Astle_2016–AdipoExpress colocalisation analysis. |
+
+Run a workflow using:
 
 ```bash
 sbatch sbatch/<script>.sbatch
 ```
 
+For example, to run the GWAS parquet preparation workflow for Astle_2016, use the following command:
+
+```bash
+sbatch sbatch/run_prepare_astle_36_fillminus1e6.sbatch
+```
 ---
 
 # Reproducibility
