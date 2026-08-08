@@ -10,7 +10,7 @@ The framework consists of three computational workflows constructed from reusabl
 - eQTL parquet preparation
 - Large-scale colocalisation analysis
 
-The framework also includes supporting software configuration and is intended for execution in a SLURM-managed HPC environment, such as such as the University of Tartu HPC Rocket cluster).
+The framework also includes supporting software configuration and is intended for execution in a SLURM-managed HPC environment, such as such as the University of Tartu HPC Rocket cluster.
 
 ---
 
@@ -24,7 +24,7 @@ The large-scale colocalisation analysis workflow generates GWAS-eQTL dataset com
 
 ![Overview of the framework and its supporting components](figures/framework_overview.png)
 
-# Repository structure
+## Repository structure
 
 | Path | Description |
 |---|---|
@@ -45,6 +45,28 @@ The large-scale colocalisation analysis workflow generates GWAS-eQTL dataset com
 
 
 ---
+
+## Workflows
+
+The computational framework contains three workflows for dataset preparation and large-scale Bayesian genetic colocalisation analysis.
+
+### GWAS parquet preparation workflow
+
+Transforms compatible harmonised GWAS summary statistics into gpu-coloc compatible parquet representations.
+
+The workflow consists of reusable modules for dataset discovery, signal generation, chromosome-level parquet generation, and final parquet assembly. Additional information about the modules is available in [`modules/README.md`](modules/README.md).
+
+### eQTL parquet preparation workflow
+
+Transforms compatible processed eQTL data into gpu-coloc compatible parquet representations.
+
+The current implementation was developed for the AdipoExpress resource and consists of reusable modules for dataset discovery, signal construction, chromosome-level parquet generation, and final parquet assembly. Additional information about the modules is available in [`modules/README.md`](modules/README.md).
+
+### Large-scale colocalisation analysis workflow
+
+Automates Bayesian genetic colocalisation analyses using gpu-coloc compatible GWAS and eQTL parquet resources.
+
+The workflow generates GWAS-eQTL dataset comparisons and executes gpu-coloc independently for each comparison. Additional information about the workflow modules is available in [`modules/README.md`](modules/README.md).
 
 # First-time setup
 
