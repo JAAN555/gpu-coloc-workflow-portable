@@ -65,7 +65,7 @@ source env.sh
 
 The provided parameter file can be used without modification if the default parameter values are suitable for the analysis and the input data are available at the configured location.
 
-Otherwise, update [`params/params_prepare_de_lange.yml`](params/params_prepare_de_lange.yml) with the required input locations and parameter values. See [Configuring workflow parameters](#configuring-workflow-parameters) for an example.
+Otherwise, update [`params/params_prepare_de_lange.yml`](params/params_prepare_de_lange.yml) with the required input locations and parameter values. See [Configuring workflow parameters](#configuring-workflow-parameters) for an example of modifying a parameter file. The example uses the Astle_2016 workflow, but the same approach can be used for the de_Lange_2017 parameter file. See the original [`params_prepare_de_lange.yml`](params/params_prepare_de_lange.yml) file for the default de_Lange_2017 parameter values.
 
 ### 5. Submit the workflow
 
