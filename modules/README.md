@@ -6,7 +6,7 @@ This directory contains the reusable Nextflow DSL2 modules used by the computati
 
 | Module | Description |
 |---|---|
-| `DISCOVER_GWAS_GWASCATALOG` | Finds compatible GWAS input datasets and creates a dataset manifest. |
+| `DISCOVER_GWAS_GWASCATALOG` | Finds compatible GWAS Catalog input datasets and creates a dataset manifest. |
 | `BUILD_GWAS_SIGNALS` | Generates GWAS association signals and corresponding signal matrices. |
 | `BUILD_GWAS_GROUPED_PARQUET_CHR` | Groups GWAS signals and creates chromosome-level parquet files. |
 | `ASSEMBLE_GWAS_GROUPED_ROOT` | Assembles chromosome-level parquet files into the final GWAS parquet root. |
@@ -18,7 +18,7 @@ The same modules are used for both Astle_2016 and de_Lange_2017. Dataset-specifi
 | Module | Description |
 |---|---|
 | `DISCOVER_ADIPOEXPRESS` | Finds chromosome-specific AdipoExpress input files and creates a dataset manifest. |
-| `BUILD_ADIPOEXPRESS_SIGNALS` | Generates eQTL signals and corresponding signal matrices from processed AdipoExpress data. |
+| `BUILD_ADIPOEXPRESS_SIGNALS` | Constructs eQTL signals and corresponding signal matrices from processed AdipoExpress data. |
 | `BUILD_EQTL_GROUPED_PARQUET_CHR` | Groups eQTL signals and creates chromosome-level parquet files. |
 | `ASSEMBLE_EQTL_GROUPED_ROOT` | Assembles chromosome-level parquet files into the final eQTL parquet root. |
 
