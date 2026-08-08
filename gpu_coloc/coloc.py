@@ -1,3 +1,11 @@
+# This file originates from gpu-coloc:
+# https://github.com/mjesse-github/gpu-coloc
+# Original author: Mihkel Jesse
+# Upstream version: commit d7b162b
+# Copyright (c) 2025 Mihkel Jesse
+# Licensed under the MIT License.
+# See LICENSE in this directory for the full license text.
+
 import argparse
 import math
 import os
