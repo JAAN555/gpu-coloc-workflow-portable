@@ -10,7 +10,7 @@ The framework consists of three computational workflows constructed from reusabl
 - eQTL parquet preparation
 - Large-scale colocalisation analysis
 
-The framework also includes supporting software configuration and is intended for execution in a SLURM-managed HPC environment, such as the University of Tartu HPC Rocket cluster.
+The framework also includes supporting software configuration and is intended for execution in a SLURM-managed HPC environment, such as the University of Tartu Rocket HPC cluster.
 
 ---
 
