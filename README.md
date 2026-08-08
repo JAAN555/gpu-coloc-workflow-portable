@@ -334,6 +334,16 @@ These files document the software versions and installed packages used during de
 
 ---
 
+## Third-party software
+
+The framework uses [gpu-coloc](https://github.com/mjesse-github/gpu-coloc) for Bayesian genetic colocalisation analysis. The included `gpu_coloc/coloc.py` originates from gpu-coloc commit [`d7b162b`](https://github.com/mjesse-github/gpu-coloc/commit/d7b162b) and is distributed under the MIT License.
+
+Copyright (c) 2025 Mihkel Jesse
+
+See [`gpu_coloc/`](gpu_coloc/) for additional attribution and license information.
+
+---
+
 ## Notes
 
 - Input GWAS and eQTL datasets are not included in this repository.
