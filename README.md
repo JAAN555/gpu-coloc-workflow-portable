@@ -336,8 +336,8 @@ These files document the software versions and installed packages used during de
 
 ## Notes
 
-- The initial Conda environment creation may take several minutes.
 - Input GWAS and eQTL datasets are not included in this repository.
-- Dataset locations should be configured through the parameter files.
-- The provided execution configurations and submission scripts target a
-SLURM-managed HPC environment.
+- Dataset locations and analysis parameters can be configured through the corresponding parameter files.
+- The provided workflows were developed and tested on the University of Tartu Rocket HPC cluster.
+- The initial Conda environment creation may take several minutes.
+- During large-scale testing, the framework was successfully used to analyse more than 300 million GWAS-eQTL signal pairs.
