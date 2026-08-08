@@ -96,12 +96,13 @@ For detailed information about workflow configuration, execution, monitoring, an
 | Path | Description |
 |---|---|
 | `configs/` | Nextflow execution configuration files. |
+| `figures/` | Figures used in the repository documentation. |
 | `modules/` | Reusable Nextflow DSL2 modules used by the workflows. See [`modules/README.md`](modules/README.md) for module descriptions. |
 | `params/` | Workflow parameter files. |
 | `reproducibility/` | Software environment records used to support reproducibility. |
 | `sbatch/` | SLURM scripts for workflow execution. |
 | `scripts/` | Python scripts used by the workflows. |
-| `gpu_coloc/` | gpu-coloc software used for Bayesian colocalisation analysis. |
+| `gpu_coloc/` | gpu-coloc code used for Bayesian genetic colocalisation analysis, together with attribution and license information. See [`gpu_coloc/README.md`](gpu_coloc/README.md). |
 | `main_prepare_astle_parquets_modular.nf` | GWAS parquet preparation workflow for Astle_2016. |
 | `main_prepare_de_lange_parquets_modular.nf` | GWAS parquet preparation workflow for de_Lange_2017. |
 | `main_prepare_adipoexpress_eqtl_parquets_modular.nf` | eQTL parquet preparation workflow for AdipoExpress. |
