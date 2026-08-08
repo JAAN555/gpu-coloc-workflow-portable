@@ -93,23 +93,24 @@ For detailed information about workflow configuration, execution, monitoring, an
 
 ## Repository structure
 
-| Path | Description |
-|---|---|
-| `configs/` | Nextflow execution configuration files. |
-| `figures/` | Figures used in the repository documentation. |
-| `modules/` | Reusable Nextflow DSL2 modules used by the workflows. See [`modules/README.md`](modules/README.md) for module descriptions. |
-| `params/` | Workflow parameter files. |
-| `reproducibility/` | Software environment records used to support reproducibility. |
-| `sbatch/` | SLURM scripts for workflow execution. |
-| `scripts/` | Python scripts used by the workflows. |
-| `gpu_coloc/` | gpu-coloc code used for Bayesian genetic colocalisation analysis, together with attribution and license information. See [`gpu_coloc/README.md`](gpu_coloc/README.md). |
-| `main_prepare_astle_parquets_modular.nf` | GWAS parquet preparation workflow for Astle_2016. |
-| `main_prepare_de_lange_parquets_modular.nf` | GWAS parquet preparation workflow for de_Lange_2017. |
-| `main_prepare_adipoexpress_eqtl_parquets_modular.nf` | eQTL parquet preparation workflow for AdipoExpress. |
-| `main_coloc_comparisons_modular.nf` | Large-scale colocalisation analysis workflow. |
-| `environment.yml` | Conda environment specification. |
-| `setup_gpucoloc.sh` | Script for creating or updating the Conda environment. |
-| `env.sh` | Script for activating the Conda environment. |
+| Path                                                 | Description                                                                                                                    |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `configs/`                                           | Nextflow execution configuration files.                                                                                        |
+| `figures/`                                           | Figures used in the repository documentation.                                                                                  |
+| `gpu_coloc/`                                         | gpu-coloc code used for Bayesian genetic colocalisation analysis. See `gpu_coloc/README.md` for attribution and citation information. |
+| `modules/`                                           | Reusable Nextflow DSL2 modules used by the workflows. See `modules/README.md` for module descriptions.                         |
+| `params/`                                            | Workflow parameter files.                                                                                                      |
+| `reproducibility/`                                   | Software environment records used to support reproducibility.                                                                  |
+| `sbatch/`                                            | SLURM scripts for workflow execution.                                                                                          |
+| `scripts/`                                           | Python scripts used by the workflows.                                                                                          |
+| `main_prepare_astle_parquets_modular.nf`             | GWAS parquet preparation workflow for Astle_2016.                                                                              |
+| `main_prepare_de_lange_parquets_modular.nf`          | GWAS parquet preparation workflow for de_Lange_2017.                                                                           |
+| `main_prepare_adipoexpress_eqtl_parquets_modular.nf` | eQTL parquet preparation workflow for AdipoExpress.                                                                            |
+| `main_coloc_comparisons_modular.nf`                  | Large-scale colocalisation analysis workflow.                                                                                  |
+| `environment.yml`                                    | Conda environment specification.                                                                                               |
+| `setup_gpucoloc.sh`                                  | Script for creating or updating the Conda environment.                                                                         |
+| `env.sh`                                             | Script for activating the Conda environment.                                                                                   |
+| `THIRD_PARTY_LICENSES.md`                            | Copyright and license information for third-party code used or adapted in the framework.                                       |
 
 
 ---
@@ -335,13 +336,13 @@ These files document the software versions and installed packages used during de
 
 ---
 
-## Third-party software
+## Third-party software and code
 
-The framework uses [gpu-coloc](https://github.com/mjesse-github/gpu-coloc) for Bayesian genetic colocalisation analysis. The included `gpu_coloc/coloc.py` originates from gpu-coloc commit [`d7b162b`](https://github.com/mjesse-github/gpu-coloc/commit/d7b162b) and is distributed under the MIT License.
+The framework uses [gpu-coloc](https://github.com/mjesse-github/gpu-coloc) for Bayesian genetic colocalisation analysis. The included `gpu_coloc/coloc.py` originates from gpu-coloc commit [`d7b162b`](https://github.com/mjesse-github/gpu-coloc/commit/d7b162b).
 
-Copyright (c) 2025 Mihkel Jesse
+Parts of the dataset preparation implementation were adapted from the data formatting approach used by gpu-coloc and from gpu-coloc input preparation code in the [EstBB-UKBB-metaanalysis repository](https://github.com/ralf-tambets/EstBB-UKBB-metaanalysis/tree/main/code/coloc/gpu-coloc).
 
-See [`gpu_coloc/`](gpu_coloc/) for additional attribution and license information.
+Both referenced repositories are distributed under the MIT License. See [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md) for copyright and license information and [`gpu_coloc/`](gpu_coloc/) for additional gpu-coloc attribution and citation information.
 
 ---
 
