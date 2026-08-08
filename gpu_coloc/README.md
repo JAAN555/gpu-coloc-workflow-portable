@@ -8,7 +8,7 @@ gpu-coloc is distributed under the MIT License.
 
 Copyright (c) 2025 Mihkel Jesse
 
-See [`LICENSE`](LICENSE) for the full license text.
+See [`../THIRD_PARTY_LICENSES.md`](../THIRD_PARTY_LICENSES.md) for the applicable license information.
 
 ## Citation
 
