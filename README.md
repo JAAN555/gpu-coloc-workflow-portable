@@ -65,13 +65,7 @@ source env.sh
 
 The provided parameter file can be used without modification if the default parameter values are suitable for the analysis and the input data are available at the configured location.
 
-Otherwise, create or replace the parameter file with the required values:
-
-```bash
-cat > params/params_prepare_de_lange.yml <<'EOF'
-...
-EOF
-```
+Otherwise, update [`params/params_prepare_de_lange.yml`](params/params_prepare_de_lange.yml) with the required input locations and parameter values. See [Configuring workflow parameters](#configuring-workflow-parameters) for an example.
 
 ### 5. Submit the workflow
 
