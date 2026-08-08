@@ -93,24 +93,24 @@ For detailed information about workflow configuration, execution, monitoring, an
 
 ## Repository structure
 
-| Path                                                 | Description                                                                                                                    |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `configs/`                                           | Nextflow execution configuration files.                                                                                        |
-| `figures/`                                           | Figures used in the repository documentation.                                                                                  |
-| `gpu_coloc/`                                         | gpu-coloc code used for Bayesian genetic colocalisation analysis. See `gpu_coloc/README.md` for attribution and citation information. |
-| `modules/`                                           | Reusable Nextflow DSL2 modules used by the workflows. See `modules/README.md` for module descriptions.                         |
-| `params/`                                            | Workflow parameter files.                                                                                                      |
-| `reproducibility/`                                   | Software environment records used to support reproducibility.                                                                  |
-| `sbatch/`                                            | SLURM scripts for workflow execution.                                                                                          |
-| `scripts/`                                           | Python scripts used by the workflows.                                                                                          |
-| `main_prepare_astle_parquets_modular.nf`             | GWAS parquet preparation workflow for Astle_2016.                                                                              |
-| `main_prepare_de_lange_parquets_modular.nf`          | GWAS parquet preparation workflow for de_Lange_2017.                                                                           |
-| `main_prepare_adipoexpress_eqtl_parquets_modular.nf` | eQTL parquet preparation workflow for AdipoExpress.                                                                            |
-| `main_coloc_comparisons_modular.nf`                  | Large-scale colocalisation analysis workflow.                                                                                  |
-| `environment.yml`                                    | Conda environment specification.                                                                                               |
-| `setup_gpucoloc.sh`                                  | Script for creating or updating the Conda environment.                                                                         |
-| `env.sh`                                             | Script for activating the Conda environment.                                                                                   |
-| `THIRD_PARTY_LICENSES.md`                            | Copyright and license information for third-party code used or adapted in the framework.                                       |
+| Path | Description |
+| --- | --- |
+| [`configs/`](configs/) | Nextflow execution configuration files. |
+| [`figures/`](figures/) | Figures used in the repository documentation. |
+| [`gpu_coloc/`](gpu_coloc/) | gpu-coloc code used for Bayesian genetic colocalisation analysis. See [`gpu_coloc/README.md`](gpu_coloc/README.md) for attribution and citation information. |
+| [`modules/`](modules/) | Reusable Nextflow DSL2 modules used by the workflows. See [`modules/README.md`](modules/README.md) for module descriptions. |
+| [`params/`](params/) | Workflow parameter files. |
+| [`reproducibility/`](reproducibility/) | Software environment records used to support reproducibility. |
+| [`sbatch/`](sbatch/) | SLURM scripts for workflow execution. |
+| [`scripts/`](scripts/) | Python scripts used by the workflows. |
+| [`main_prepare_astle_parquets_modular.nf`](main_prepare_astle_parquets_modular.nf) | GWAS parquet preparation workflow for Astle_2016. |
+| [`main_prepare_de_lange_parquets_modular.nf`](main_prepare_de_lange_parquets_modular.nf) | GWAS parquet preparation workflow for de_Lange_2017. |
+| [`main_prepare_adipoexpress_eqtl_parquets_modular.nf`](main_prepare_adipoexpress_eqtl_parquets_modular.nf) | eQTL parquet preparation workflow for AdipoExpress. |
+| [`main_coloc_comparisons_modular.nf`](main_coloc_comparisons_modular.nf) | Large-scale colocalisation analysis workflow. |
+| [`environment.yml`](environment.yml) | Conda environment specification. |
+| [`setup_gpucoloc.sh`](setup_gpucoloc.sh) | Script for creating or updating the Conda environment. |
+| [`env.sh`](env.sh) | Script for activating the Conda environment. |
+| [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md) | Copyright and license information for third-party code used or adapted in the framework. |
 
 
 ---
