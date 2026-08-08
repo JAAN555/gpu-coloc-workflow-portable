@@ -14,14 +14,23 @@ The workflows are implemented using reusable Nextflow DSL2 modules and are inten
 
 # Repository structure
 
-```
-configs/            Nextflow execution configuration files
-modules/            Reusable Nextflow DSL2 modules
-params/             Workflow parameter files
-reproducibility/    Software environment records
-sbatch/             SLURM submission scripts
-scripts/            Supporting Python scripts
-```
+| Path | Description |
+|---|---|
+| `configs/` | Nextflow execution configuration files. |
+| `modules/` | Reusable Nextflow DSL2 modules used by the workflows. See [`modules/README.md`](modules/README.md) for module descriptions. |
+| `params/` | Workflow parameter files. |
+| `reproducibility/` | Software environment records used to support reproducibility. |
+| `sbatch/` | SLURM scripts for workflow execution. |
+| `scripts/` | Python scripts used by the workflows. |
+| `gpu_coloc/` | gpu-coloc software used for Bayesian colocalisation analysis. |
+| `main_prepare_astle_parquets_modular.nf` | GWAS parquet preparation workflow for Astle_2016. |
+| `main_prepare_de_lange_parquets_modular.nf` | GWAS parquet preparation workflow for de_Lange_2017. |
+| `main_prepare_adipoexpress_eqtl_parquets_modular.nf` | eQTL parquet preparation workflow for AdipoExpress. |
+| `main_coloc_comparisons_modular.nf` | Large-scale colocalisation analysis workflow. |
+| `environment.yml` | Conda environment specification. |
+| `setup_gpucoloc.sh` | Script for creating or updating the Conda environment. |
+| `env.sh` | Script for activating the Conda environment. |
+
 
 ---
 
