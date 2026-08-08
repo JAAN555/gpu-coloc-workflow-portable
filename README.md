@@ -240,20 +240,6 @@ The resulting TSV files can be copied from the HPC environment for downstream ex
 
 ---
 
-## Reproducibility
-
-The software environment used for the framework is specified in `environment.yml`.
-
-The `reproducibility/` directory contains records of the software environment used for the final validated workflow execution:
-
-- `software_versions.txt`
-- `conda_packages.txt`
-- `pip_packages.txt`
-
-These files document the software versions used during development and validation of the framework.
-
----
-
 ## HPC environment
 
 The framework was developed and tested on the University of Tartu Rocket HPC cluster.
@@ -266,6 +252,20 @@ module load any/python/3.8.3-conda
 On other systems, users must have Conda or Miniconda installed and may
 need to replace the HPC-specific `module load` command in
 `setup_gpucoloc.sh` and `env.sh`.
+
+---
+
+## Reproducibility
+
+The software environment required by the framework is specified in [`environment.yml`](environment.yml) and can be created using [`setup_gpucoloc.sh`](setup_gpucoloc.sh).
+
+The [`reproducibility/`](reproducibility/) directory contains records of the software environment used for the final validated workflow execution:
+
+- [`software_versions.txt`](reproducibility/software_versions.txt)
+- [`conda_packages.txt`](reproducibility/conda_packages.txt)
+- [`pip_packages.txt`](reproducibility/pip_packages.txt)
+
+These files document the software versions and installed packages used during development and validation of the framework.
 
 ---
 
